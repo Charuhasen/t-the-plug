@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <radialGradient id="cookieBase" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#f4d6a6"/>
+      <stop offset="60%" stop-color="#e7b867"/>
+      <stop offset="100%" stop-color="#d09a45"/>
+    </radialGradient>
+  </defs>
+  <circle cx="80" cy="80" r="70" fill="url(#cookieBase)"/>
+  <g fill="#4b2e16">
+    <circle cx="60" cy="55" r="9"/>
+    <circle cx="105" cy="60" r="7"/>
+    <circle cx="85" cy="90" r="10"/>
+    <circle cx="55" cy="105" r="7"/>
+    <circle cx="110" cy="105" r="8"/>
+    <circle cx="75" cy="40" r="6"/>
+    <circle cx="120" cy="80" r="6"/>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <radialGradient id="oatmealBase" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#f7e4c1"/>
+      <stop offset="60%" stop-color="#e2c892"/>
+      <stop offset="100%" stop-color="#cfa96c"/>
+    </radialGradient>
+  </defs>
+  <circle cx="80" cy="80" r="70" fill="url(#oatmealBase)"/>
+  <g fill="#fdf7ec">
+    <ellipse cx="55" cy="50" rx="12" ry="7" transform="rotate(-12 55 50)"/>
+    <ellipse cx="100" cy="55" rx="10" ry="6" transform="rotate(20 100 55)"/>
+    <ellipse cx="70" cy="90" rx="13" ry="8" transform="rotate(-8 70 90)"/>
+    <ellipse cx="110" cy="95" rx="11" ry="7" transform="rotate(16 110 95)"/>
+    <ellipse cx="60" cy="115" rx="9" ry="6" transform="rotate(10 60 115)"/>
+  </g>
+  <g fill="#b58133">
+    <circle cx="95" cy="80" r="6"/>
+    <circle cx="120" cy="70" r="4"/>
+    <circle cx="75" cy="60" r="5"/>
+    <circle cx="50" cy="90" r="4"/>
+  </g>
+</svg>

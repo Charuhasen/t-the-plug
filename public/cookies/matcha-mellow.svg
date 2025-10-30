@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <radialGradient id="matchaBase" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#e6f4cc"/>
+      <stop offset="60%" stop-color="#c5e07f"/>
+      <stop offset="100%" stop-color="#9fbc52"/>
+    </radialGradient>
+  </defs>
+  <circle cx="80" cy="80" r="70" fill="url(#matchaBase)"/>
+  <g fill="#fdfcfa">
+    <circle cx="60" cy="50" r="9"/>
+    <circle cx="100" cy="55" r="8"/>
+    <circle cx="80" cy="95" r="10"/>
+    <circle cx="115" cy="90" r="6"/>
+    <circle cx="55" cy="110" r="7"/>
+  </g>
+  <g fill="#88a94c">
+    <ellipse cx="80" cy="70" rx="18" ry="9"/>
+    <ellipse cx="95" cy="110" rx="12" ry="6"/>
+  </g>
+</svg>

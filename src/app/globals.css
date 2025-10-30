@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fef8ee;
+  --foreground: #0f0f0f;
+  --accent: #ff6b5f;
+  --accent-secondary: #1c8ef9;
+  --accent-tertiary: #ffe066;
+  --surface: #ffffff;
+  --muted-surface: #fff2d9;
+  --border-color: #0f0f0f;
+  --shadow-color: 10, 10, 10;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-tertiary: var(--accent-tertiary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f0f0f;
+    --foreground: #f6f6f6;
+    --accent: #ff6b5f;
+    --accent-secondary: #4aa9ff;
+    --accent-tertiary: #ffe066;
+    --surface: #1c1c1c;
+    --muted-surface: #262626;
+    --border-color: #f6f6f6;
+    --shadow-color: 246, 246, 246;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background-image: radial-gradient(#10101010 1px, transparent 1px),
+    radial-gradient(#10101008 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+  min-height: 100vh;
+}
+
+@layer base {
+  * {
+    border-color: var(--border-color);
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #ffffff;
+  }
 }

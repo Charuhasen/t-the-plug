@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <radialGradient id="caramelBase" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#f6d1a3"/>
+      <stop offset="60%" stop-color="#dd9f55"/>
+      <stop offset="100%" stop-color="#bf7733"/>
+    </radialGradient>
+  </defs>
+  <circle cx="80" cy="80" r="70" fill="url(#caramelBase)"/>
+  <g fill="#fff2dc">
+    <circle cx="60" cy="45" r="6"/>
+    <circle cx="100" cy="50" r="7"/>
+    <circle cx="85" cy="95" r="8"/>
+    <circle cx="115" cy="85" r="5"/>
+    <circle cx="55" cy="105" r="6"/>
+  </g>
+  <g fill="#a2541c">
+    <path d="M45 70c10-8 20-12 30-5 8 5 10 13 23 14 8 1 15-2 20-7 3 9-2 19-10 25-11 8-27 8-38 1-11-8-24-9-25-28z"/>
+  </g>
+</svg>
