@@ -65,9 +65,12 @@ export function SiteFooter() {
               Reach Out
             </p>
             <div className="space-y-3 text-sm text-neutral-700">
-              <p className="rounded-[18px] border-[3px] border-[var(--border-color)] bg-[var(--muted-surface)] px-4 py-3 font-semibold shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.2)] sm:inline-flex sm:w-full sm:items-center sm:justify-between">
-                WhatsApp: <span className="font-black">+233 556637554</span>
-              </p>
+              <div className="flex flex-col gap-2 rounded-[18px] border-[3px] border-[var(--border-color)] bg-[var(--muted-surface)] px-4 py-3 font-semibold shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.2)] md:flex-row md:items-center md:justify-between">
+                <span>WhatsApp:</span>
+                <span className="inline-flex items-center gap-2 rounded-[14px] border-[2px] border-[var(--border-color)] bg-[var(--surface)] px-3 py-1 text-sm font-black shadow-[3px_3px_0_0_rgba(var(--shadow-color),0.2)]">
+                  +233 556637554
+                </span>
+              </div>
               <a
                 className="inline-flex items-center gap-2 rounded-[16px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] px-4 py-2 font-semibold text-[var(--border-color)] shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.18)] transition hover:-translate-y-1 hover:bg-[var(--accent-secondary)] hover:text-white hover:shadow-[10px_10px_0_0_rgba(var(--shadow-color),0.25)]"
                 href="mailto:hello@t-the-plug.com"
