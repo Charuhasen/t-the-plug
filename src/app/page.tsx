@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { useCart } from "@/context/cart-context";
@@ -29,6 +29,20 @@ export default function Home() {
   const [modalView, setModalView] = useState(0);
   const [viewDirection, setViewDirection] = useState(0);
   const { addItem } = useCart();
+  useEffect(() => {
+    if (typeof document === "undefined") {
+      return;
+    }
+    if (selectedCookie) {
+      const original = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = original;
+      };
+    }
+    document.body.style.overflow = "";
+    return;
+  }, [selectedCookie]);
 
   const handleOpenCookie = (cookie: Cookie) => {
     setSelectedCookie(cookie);
