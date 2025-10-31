@@ -187,11 +187,11 @@ export default function Home() {
             >
               <button
                 type="button"
-                className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border-[2px] border-[var(--border-color)] bg-transparent text-xl font-semibold text-[var(--border-color)] transition hover:bg-[var(--accent-tertiary)]"
+                className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full border-[2px] border-[var(--border-color)] bg-[var(--surface)] text-sm font-semibold text-[var(--border-color)] shadow-[3px_3px_0_0_rgba(var(--shadow-color),0.2)] transition hover:-translate-y-1 hover:bg-[var(--accent-tertiary)]"
                 onClick={handleCloseModal}
                 aria-label="Close details"
               >
-                X
+                ×
               </button>
               <div className="flex flex-col items-center gap-5">
                 <div className="relative h-40 w-full max-w-[260px] overflow-hidden rounded-3xl border-[3px] border-[var(--border-color)] bg-[var(--muted-surface)] shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.18)]">
