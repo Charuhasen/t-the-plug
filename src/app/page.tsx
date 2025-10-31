@@ -175,7 +175,7 @@ export default function Home() {
               view details, ingredients, and add it straight to your cart.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <div className="grid grid-cols-2 gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             {cookies.map((cookie, index) => (
               <motion.button
                 key={cookie.id}
@@ -185,9 +185,9 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group flex flex-col items-stretch rounded-[28px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] p-6 text-left shadow-[8px_8px_0_0_rgba(var(--shadow-color),0.18)] transition-transform hover:-translate-y-1 hover:shadow-[12px_12px_0_0_rgba(var(--shadow-color),0.25)]"
+                className="group flex aspect-[4/5] flex-col items-stretch rounded-[24px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] p-4 text-left shadow-[8px_8px_0_0_rgba(var(--shadow-color),0.18)] transition-transform hover:-translate-y-1 hover:shadow-[12px_12px_0_0_rgba(var(--shadow-color),0.25)] md:aspect-[5/6]"
               >
-                <div className="relative mb-5 h-40 w-full overflow-hidden rounded-2xl border-[3px] border-[var(--border-color)] bg-[var(--muted-surface)] transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.2)]">
+                <div className="relative mb-4 h-32 w-full overflow-hidden rounded-2xl border-[3px] border-[var(--border-color)] bg-[var(--muted-surface)] transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.2)] md:h-40">
                   <Image
                     src={cookie.image}
                     alt={cookie.name}
@@ -196,23 +196,23 @@ export default function Home() {
                     className="object-cover"
                   />
                 </div>
-                <div className="space-y-3">
-                  <div>
-                    <h3 className="text-lg font-semibold text-[var(--border-color)]">
+                <div className="flex flex-1 flex-col justify-between gap-3">
+                  <div className="space-y-1.5">
+                    <h3 className="text-sm font-semibold text-[var(--border-color)] md:text-lg">
                       {cookie.name}
                     </h3>
-                    <p className="text-sm text-neutral-700">{cookie.size}</p>
+                    <p className="text-xs text-neutral-700 md:text-sm">{cookie.size}</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[var(--accent)] md:text-xs">
+                      {cookie.delightLevel}
+                    </p>
                   </div>
-                  <p className="text-sm leading-relaxed text-neutral-700">
+                  <p className="line-clamp-2 text-xs leading-relaxed text-neutral-700 md:text-sm">
                     {cookie.description}
                   </p>
                 </div>
-                <div className="mt-auto flex items-center justify-between pt-6">
+                <div className="mt-auto flex items-center justify-between pt-5">
                   <span className="text-sm font-bold text-[var(--border-color)]">
                     GHS {cookie.price.toFixed(2)}
-                  </span>
-                  <span className="text-xs font-semibold uppercase tracking-[0.35em] text-neutral-700">
-                    View
                   </span>
                 </div>
               </motion.button>
