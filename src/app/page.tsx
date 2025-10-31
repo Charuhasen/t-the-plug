@@ -51,6 +51,9 @@ export default function Home() {
     handleCloseModal();
   };
 
+  const selectedPrice =
+    selectedCookie ? selectedCookie.price * modalQuantity : 0;
+
   const handleIncreaseQuantity = () =>
     setModalQuantity((previous) => previous + 1);
 
@@ -253,14 +256,16 @@ export default function Home() {
                     {selectedCookie.description}
                   </p>
                 </div>
-                <div className="relative w-full min-h-[240px] overflow-hidden rounded-[24px] border-[3px] border-[var(--border-color)] bg-[var(--surface)]/95 px-3 pt-4 shadow-[8px_8px_0_0_rgba(var(--shadow-color),0.2)] sm:min-h-[260px]">
+                <div
+                  className="relative w-full min-h-[240px] overflow-hidden rounded-[24px] border-[3px] border-[var(--border-color)] bg-[var(--surface)]/95 px-3 pt-4 shadow-[8px_8px_0_0_rgba(var(--shadow-color),0.2)] sm:min-h-[260px]"
+                >
                   <div className="mb-3 flex justify-center gap-2 sm:gap-3">
                     <button
                       type="button"
-                      className={`flex flex-1 max-w-[160px] items-center justify-center rounded-[16px] border-[3px] border-[var(--border-color)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition ${
+                      className={`flex flex-1 max-w-[160px] items-center justify-center rounded-[16px] border-[3px] border-[var(--border-color)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] shadow-[4px_4px_0_0_rgba(var(--shadow-color),0.2)] transition ${
                         modalView === 0
-                          ? "bg-[var(--accent-tertiary)] text-[var(--border-color)] shadow-[4px_4px_0_0_rgba(var(--shadow-color),0.2)]"
-                          : "bg-[var(--surface)] text-neutral-700 shadow-[4px_4px_0_0_rgba(var(--shadow-color),0.15)] hover:-translate-y-[2px]"
+                          ? "bg-[var(--accent-tertiary)] text-[var(--border-color)]"
+                          : "bg-[var(--surface)] text-neutral-700 hover:-translate-y-[2px]"
                       }`}
                       onClick={() => handleViewChange(0)}
                       aria-label="View details"
@@ -269,10 +274,10 @@ export default function Home() {
                     </button>
                     <button
                       type="button"
-                      className={`flex flex-1 max-w-[160px] items-center justify-center rounded-[16px] border-[3px] border-[var(--border-color)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition ${
+                      className={`flex flex-1 max-w-[160px] items-center justify-center rounded-[16px] border-[3px] border-[var(--border-color)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] shadow-[4px_4px_0_0_rgba(var(--shadow-color),0.2)] transition ${
                         modalView === 1
-                          ? "bg-[var(--accent-tertiary)] text-[var(--border-color)] shadow-[4px_4px_0_0_rgba(var(--shadow-color),0.2)]"
-                          : "bg-[var(--surface)] text-neutral-700 shadow-[4px_4px_0_0_rgba(var(--shadow-color),0.15)] hover:-translate-y-[2px]"
+                          ? "bg-[var(--accent-tertiary)] text-[var(--border-color)]"
+                          : "bg-[var(--surface)] text-neutral-700 hover:-translate-y-[2px]"
                       }`}
                       onClick={() => handleViewChange(1)}
                       aria-label="View ingredients"
@@ -295,43 +300,47 @@ export default function Home() {
                       drag="x"
                       dragConstraints={{ left: 0, right: 0 }}
                       onDragEnd={handleDragEnd}
-                      className="w-full space-y-4 text-left pb-14 sm:pb-4"
+                      className={`w-full space-y-4 text-left ${
+                        modalView === 0 ? "pb-14 sm:pb-4" : "pb-14 sm:pb-4"
+                      }`}
                     >
                       {modalView === 0 ? (
-                        <div className="min-h-[200px] rounded-[18px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] px-4 py-3 shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.18)] sm:min-h-[220px]">
-                          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-                            <span className="text-sm font-semibold text-[var(--border-color)]">
-                              GHS {selectedCookie.price.toFixed(2)}
-                            </span>
-                            <div className="flex items-center gap-3 rounded-[18px] border-[3px] border-[var(--border-color)] bg-[var(--muted-surface)] px-3 py-1 shadow-[4px_4px_0_0_rgba(var(--shadow-color),0.18)]">
+                        <div className="flex min-h-[200px] flex-col items-center justify-center gap-6 py-2 sm:min-h-[220px] sm:gap-8">
+                          <span className="text-center text-3xl font-semibold text-[var(--border-color)] sm:text-[34px]">
+                            GHS {selectedPrice.toFixed(2)}
+                          </span>
+                          <div className="flex w-full flex-col gap-4 px-2 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-0">
+                            <div className="flex w-full items-center justify-center gap-3 rounded-[14px] border-[3px] border-[var(--border-color)] bg-[var(--muted-surface)] px-4 py-1.5 shadow-[4px_4px_0_0_rgba(var(--shadow-color),0.18)] sm:w-auto">
                               <button
                                 type="button"
-                                className="flex h-8 w-8 items-center justify-center rounded-[12px] border-[2px] border-[var(--border-color)] bg-white text-neutral-800 shadow-[3px_3px_0_0_rgba(var(--shadow-color),0.18)] transition hover:bg-[var(--accent-tertiary)]"
+                                className="flex h-9 w-9 items-center justify-center rounded-[12px] border-[2px] border-[var(--border-color)] bg-white text-base font-semibold text-neutral-800 shadow-[3px_3px_0_0_rgba(var(--shadow-color),0.18)] transition hover:bg-[var(--accent-tertiary)]"
                                 onClick={handleDecreaseQuantity}
                                 aria-label="Decrease quantity"
                               >
                                 -
                               </button>
-                              <span className="min-w-[2ch] text-center text-sm font-semibold text-[var(--border-color)]">
+                              <span className="min-w-[2ch] px-1 text-center text-sm font-semibold text-[var(--border-color)]">
                                 {modalQuantity}
                               </span>
                               <button
                                 type="button"
-                                className="flex h-8 w-8 items-center justify-center rounded-[12px] border-[2px] border-[var(--border-color)] bg-white text-neutral-800 shadow-[3px_3px_0_0_rgba(var(--shadow-color),0.18)] transition hover:bg-[var(--accent-tertiary)]"
+                                className="flex h-9 w-9 items-center justify-center rounded-[12px] border-[2px] border-[var(--border-color)] bg-white text-base font-semibold text-neutral-800 shadow-[3px_3px_0_0_rgba(var(--shadow-color),0.18)] transition hover:bg-[var(--accent-tertiary)]"
                                 onClick={handleIncreaseQuantity}
                                 aria-label="Increase quantity"
                               >
                                 +
                               </button>
                             </div>
+                            <div className="flex w-full items-center sm:w-auto sm:flex-1">
+                              <button
+                                type="button"
+                                className="inline-flex w-full items-center justify-center rounded-[16px] border-[3px] border-[var(--border-color)] bg-[var(--accent)] px-4 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white shadow-[4px_4px_0_0_rgba(var(--shadow-color),0.2)] transition-transform hover:-translate-y-1 hover:shadow-[8px_8px_0_0_rgba(var(--shadow-color),0.25)]"
+                                onClick={() => handleAddToCart(selectedCookie)}
+                              >
+                                Add to Cart
+                              </button>
+                            </div>
                           </div>
-                          <button
-                            type="button"
-                            className="mt-4 inline-flex w-full items-center justify-center rounded-[16px] border-[3px] border-[var(--border-color)] bg-[var(--accent)] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-[4px_4px_0_0_rgba(var(--shadow-color),0.2)] transition-transform hover:-translate-y-1 hover:shadow-[8px_8px_0_0_rgba(var(--shadow-color),0.25)]"
-                            onClick={() => handleAddToCart(selectedCookie)}
-                          >
-                            Add to Cart
-                          </button>
                         </div>
                       ) : (
                         <div className="min-h-[200px] rounded-[18px] border-[3px] border-[var(--border-color)] bg-[var(--muted-surface)] p-4 shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.15)] sm:min-h-[220px]">
