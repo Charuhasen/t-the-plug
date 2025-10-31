@@ -29,7 +29,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b-[3px] border-[var(--border-color)] bg-[var(--background)]/92 backdrop-blur transition-colors">
+    <header className="sticky top-0 z-50 border-b-[3px] border-[var(--border-color)] bg-[var(--background)]/92 backdrop-blur transition-colors supports-[backdrop-filter]:backdrop-blur-md">
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-6 md:px-8 lg:px-10">
         <Link className="group flex items-center gap-4" href="/">
           <div className="relative flex h-11 w-11 items-center justify-center rounded-[16px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.2)] transition-transform group-hover:-translate-y-1 sm:h-12 sm:w-12">

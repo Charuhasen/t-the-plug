@@ -31,17 +31,40 @@ export default function Home() {
   const { addItem } = useCart();
   const shouldReduceMotion = useReducedMotion();
   useEffect(() => {
-    if (typeof document === "undefined") {
+    if (typeof window === "undefined") {
       return;
     }
+
+    const body = document.body;
+
     if (selectedCookie) {
-      const original = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
+      const previousStyles = {
+        position: body.style.position,
+        top: body.style.top,
+        overflowY: body.style.overflowY,
+        width: body.style.width,
+      };
+      const scrollY = window.scrollY;
+
+      body.style.position = "fixed";
+      body.style.top = `-${scrollY}px`;
+      body.style.width = "100%";
+      body.style.overflowY = "hidden";
+
       return () => {
-        document.body.style.overflow = original;
+        body.style.position = previousStyles.position;
+        body.style.top = previousStyles.top;
+        body.style.width = previousStyles.width;
+        body.style.overflowY = previousStyles.overflowY;
+        window.scrollTo(0, scrollY);
       };
     }
-    document.body.style.overflow = "";
+
+    body.style.position = "";
+    body.style.top = "";
+    body.style.width = "";
+    body.style.overflowY = "";
+
     return;
   }, [selectedCookie]);
 
@@ -81,14 +104,6 @@ export default function Home() {
     }
     setViewDirection(nextView > modalView ? 1 : -1);
     setModalView(nextView);
-  };
-
-  const handleDragEnd = (_: unknown, info: { offset: { x: number } }) => {
-    if (info.offset.x < -80) {
-      handleViewChange(1);
-    } else if (info.offset.x > 80) {
-      handleViewChange(0);
-    }
   };
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
@@ -336,9 +351,6 @@ export default function Home() {
                               opacity: { duration: 0.2 },
                             }
                       }
-                      drag="x"
-                      dragConstraints={{ left: 0, right: 0 }}
-                      onDragEnd={handleDragEnd}
                       className={`w-full space-y-4 text-left ${
                         modalView === 0 ? "pb-14 sm:pb-4" : "pb-14 sm:pb-4"
                       }`}
