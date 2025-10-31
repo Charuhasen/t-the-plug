@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { SiteHeader } from "@/components/site-header";
@@ -29,6 +29,7 @@ export default function Home() {
   const [modalView, setModalView] = useState(0);
   const [viewDirection, setViewDirection] = useState(0);
   const { addItem } = useCart();
+  const shouldReduceMotion = useReducedMotion();
   useEffect(() => {
     if (typeof document === "undefined") {
       return;
@@ -98,11 +99,17 @@ export default function Home() {
           id="home"
           className="mx-auto w-full max-w-6xl px-6 md:px-8 lg:px-10"
         >
-          <div className="grid items-center gap-10 rounded-[32px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] p-6 shadow-[12px_12px_0_0_rgba(var(--shadow-color),0.25)] transition sm:p-8 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:p-14">
+          <div className="grid items-center gap-8 rounded-[28px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] p-5 shadow-none transition sm:p-8 md:gap-12 md:shadow-[12px_12px_0_0_rgba(var(--shadow-color),0.25)] lg:grid-cols-[1.1fr_0.9fr] lg:p-14">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={
+                shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+              }
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : { duration: 0.8, ease: "easeOut" }
+              }
               className="space-y-6 sm:space-y-7"
             >
               <p className="inline-flex items-center gap-2 rounded-full border-[3px] border-[var(--border-color)] bg-[var(--accent-tertiary)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-[var(--border-color)]">
@@ -118,9 +125,15 @@ export default function Home() {
               </p>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={
+                shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.92 }
+              }
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : { duration: 0.8, ease: "easeOut", delay: 0.1 }
+              }
               className="relative hidden min-h-[260px] items-center justify-center sm:flex sm:min-h-[300px] md:min-h-[340px]"
             >
               <div className="absolute inset-0 -z-10 rounded-[40px] border-[3px] border-dashed border-[var(--border-color)] bg-[var(--accent-tertiary)] opacity-60" />
@@ -130,8 +143,8 @@ export default function Home() {
                     key={cookie.id}
                     type="button"
                     onClick={() => handleOpenCookie(cookie)}
-                    className="group relative flex flex-col items-center rounded-[28px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] p-6 text-left shadow-[8px_8px_0_0_rgba(var(--shadow-color),0.2)] transition-transform hover:-translate-y-1 hover:shadow-[12px_12px_0_0_rgba(var(--shadow-color),0.25)]"
-                    whileHover={{ scale: 1.03 }}
+                    className="group relative flex flex-col items-center rounded-[28px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] p-6 text-left shadow-none transition-transform hover:-translate-y-1 md:shadow-[8px_8px_0_0_rgba(var(--shadow-color),0.2)] md:hover:shadow-[12px_12px_0_0_rgba(var(--shadow-color),0.25)]"
+                    whileHover={shouldReduceMotion ? undefined : { scale: 1.03 }}
                   >
                     <div className="relative mb-4 h-28 w-32 overflow-hidden rounded-2xl border-[3px] border-[var(--border-color)] bg-[var(--muted-surface)] transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.2)]">
                     <Image
@@ -181,11 +194,19 @@ export default function Home() {
                 key={cookie.id}
                 type="button"
                 onClick={() => handleOpenCookie(cookie)}
-                initial={{ opacity: 0, y: 30 }}
+                initial={
+                  shouldReduceMotion
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: 30 }
+                }
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group flex aspect-[4/5] flex-col items-stretch rounded-[24px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] p-4 text-left shadow-[8px_8px_0_0_rgba(var(--shadow-color),0.18)] transition-transform hover:-translate-y-1 hover:shadow-[12px_12px_0_0_rgba(var(--shadow-color),0.25)] md:aspect-[5/6]"
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : { duration: 0.5, delay: index * 0.08 }
+                }
+                className="group flex aspect-[4/5] flex-col items-stretch rounded-[24px] border-[3px] border-[var(--border-color)] bg-[var(--surface)] p-4 text-left shadow-none transition-transform hover:-translate-y-1 md:aspect-[5/6] md:shadow-[8px_8px_0_0_rgba(var(--shadow-color),0.18)] md:hover:shadow-[12px_12px_0_0_rgba(var(--shadow-color),0.25)]"
               >
                 <div className="relative mb-4 h-32 w-full overflow-hidden rounded-2xl border-[3px] border-[var(--border-color)] bg-[var(--muted-surface)] transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-[6px_6px_0_0_rgba(var(--shadow-color),0.2)] md:h-40">
                   <Image
@@ -307,10 +328,14 @@ export default function Home() {
                       initial="enter"
                       animate="center"
                       exit="exit"
-                      transition={{
-                        x: { type: "spring", stiffness: 400, damping: 40 },
-                        opacity: { duration: 0.2 },
-                      }}
+                      transition={
+                        shouldReduceMotion
+                          ? { duration: 0 }
+                          : {
+                              x: { type: "spring", stiffness: 400, damping: 40 },
+                              opacity: { duration: 0.2 },
+                            }
+                      }
                       drag="x"
                       dragConstraints={{ left: 0, right: 0 }}
                       onDragEnd={handleDragEnd}
